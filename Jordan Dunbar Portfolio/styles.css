@@ -1,0 +1,606 @@
+
+/* Set custom variables and properties */
+
+*, *::before, *::after /* Selects all elements on webpage */
+{
+
+  box-sizing: border-box; /* Sets box sizing to border box settings */
+}
+
+
+:root /* Selects webpage root element */
+{
+
+  /* Set custom variables */
+
+  --fw-reg: 400;
+  --fw-bold: 700;
+
+  --clr-light: #fff;
+  --clr-dark: #272343;
+  --clr-accent: #bae8e8;
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0,0,0,0.25), 0.125em 0.125em 0.25em rgba(0,0,0,0.15);
+}
+
+
+/* When website is on a device bigger than 800px wide */
+@media (min-width: 800px)
+{
+
+  :root /* Selects webpage root element */
+  {
+
+    --fs-h1: 4.5rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.125rem;
+  }
+
+  .services
+  {
+
+    display: flex;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .service + .service /* If 2 service content are side by side */
+  {
+
+    margin-left: 2em;
+  }
+
+}
+
+
+/* When website is on a device bigger than 600px wide, changes the font size */
+@media (min-width: 600px)
+{
+
+  .intro
+  {
+
+    display: grid;
+    grid-template-areas: "img title" "img subtitle";
+    grid-template-columns: min-content max-content;
+    grid-column-gap: 1em;
+
+    /* Centres the content */
+    margin: 0 auto;
+    width: min-content;
+  }
+
+  .intro-img
+  {
+
+    grid-area: img;
+    min-width: 250px;
+
+    /* Set image on top of coloured bar */
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-subtitle-intro
+  {
+
+    align-self: start;
+    grid-column: -1/1;
+    grid-row: 2;
+    text-align: right;
+
+    /* Stretches coloured bar to the left and lines it up with the text on the right */
+    position: relative;
+    left: -1.5em;
+    width: calc(100% + 1.5em);
+  }
+
+  .about-me
+  {
+
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas: "title img" "subtitle img" "text img";
+    grid-column-gap: 2em;
+  }
+
+  .about-me-img
+  {
+
+    grid-area: img; /* sets the variable */
+  }
+
+  .section-title-about
+  {
+
+    grid-area: title; /* sets the variable */
+  }
+
+  .section-subtitle-about /* repositions the green bar */
+  {
+
+    grid-column: 1/-1;
+    grid-row: 2;
+    position: relative;
+    left: -1em;
+    width: calc(100% + 2em);
+    padding-left: 1em;
+    padding-right: calc(200px + 4em);
+  }
+
+  .about-me-img
+  {
+
+    grid-area: img;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+
+
+
+
+
+
+/* General */
+
+html
+{
+
+  scroll-behavior: smooth; /* Makes the webpage scroll smooth when links are clicked */
+}
+
+body
+{
+
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  margin: 0;
+  font-family: "Montserrat";
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+img
+{
+
+  /* Prevents images overflowing out their parents */
+  display: block;
+  max-width: 100%;
+}
+
+section
+{
+
+  padding: 5em 2em;
+}
+
+
+
+/* Typography */
+
+h1, h2, h3
+{
+
+  line-height: 1;
+  margin: 0;
+}
+
+h1
+{
+
+  font-size: var(--fs-h1);
+}
+
+h2
+{
+
+  font-size: var(--fs-h2);
+}
+
+h3
+{
+
+  font-size: var(--fs-h3);
+}
+
+.section-title
+{
+
+  margin-bottom: 0.25em;
+}
+
+.section-title-intro
+{
+
+  font-weight: var(--fw-reg);
+}
+
+/* Puts anything in the strong tags on it's own line */
+strong
+{
+
+  display: block;
+}
+
+.section-subtitle
+{
+
+  margin: 0;
+  font-size: var(--fs-h3);
+}
+
+.section-subtitle-intro, .section-subtitle-about
+{
+
+  background: var(--clr-accent);
+  font-family: "Montserrat";
+  margin-bottom: 1em;
+  padding: 0.25em 1em;
+}
+
+
+/* Buttons */
+
+.btn
+{
+
+  display: inline-block; /* Sets button style */
+  padding: 1em 2.3em;
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  text-transform: uppercase;
+  font-size: 1em;
+  text-decoration: none;
+  letter-spacing: 5px;
+  transition: transform 200ms ease-in-out; /* Makes the button grow smoothly */
+}
+
+.btn:hover /* Changes button size when hovered over */
+{
+
+  transform: scale(1.2);
+}
+
+
+
+/* The Nav Bar */
+
+.logo
+{
+
+  max-width: 100px;
+}
+
+header
+{
+
+  display: flex; /* Sets the content in a flexbox */
+  justify-content: space-between; /* Spaces content out */
+  padding: 1em; /* Ensures text dosen't touch the side of the screen */
+}
+
+.nav
+{
+
+  position: fixed; /* Fixes the navbar in place so it follows you as you scroll down the page */
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  z-index: 100; /* Ensures that the navbar is on top of all the content */
+
+  /* Makes the navbar cover the full page */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  transform: translateX(100%); /* Hides the navbar */
+  transition: transform 250ms cubic-bezier(0.5, 0, 0.5, 1); /* Makes nav bar open and close smoothly */
+}
+
+.nav-list
+{
+
+  display: flex;
+  list-style: none;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  /* Ensures the content is centred */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link
+{
+
+  color: inherit;
+  font-size: var(--fs-h2);
+  text-decoration: none;
+}
+
+.nav-link:hover
+{
+
+  color: var(--clr-accent);
+}
+
+.hamburger
+{
+
+  display: block;
+  position: relative;
+}
+
+.hamburger::before, .hamburger::after
+{
+
+  content: ''; /* Required for this to work */
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.hamburger, .hamburger::before, .hamburger::after
+{
+
+  background-color: var(--clr-accent);
+  width: 2em;
+  height: 3px;
+  border-radius: 1em;
+  transition: transform 250ms ease-in-out;
+}
+
+.hamburger::before
+{
+
+  top: 6px; /* Adds top line on hamburger icon */
+}
+
+.hamburger::after
+{
+
+  bottom: 6px; /* Adds bottom line on hamburger icon */
+}
+
+.nav-toggle
+{
+
+  /* Removes button outline */
+  padding: 0.5em;
+  background: transparent;
+  border: 0;
+
+  cursor: pointer; /* Changes mouse icon to hand when hovered over */
+  position: absolute;
+  right: 1em;
+  z-index: 200; /* Sets the hamburger in front of the nav bar */
+}
+
+
+/* When the navbar is opened */
+.nav-open .nav
+{
+
+  transform: translateX(0);
+}
+
+.nav-open .nav-toggle
+{
+
+  position: fixed;
+}
+
+.nav-open .hamburger
+{
+
+  transform: rotate(1turn);
+}
+
+
+
+/* Home Section */
+
+.intro
+{
+
+  position: relative;
+}
+
+.intro-img
+{
+
+  box-shadow: var(--bs); /* Adds shadow to the image */
+}
+
+
+
+/* My Services Section */
+
+.my-services
+{
+
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/services-bg.jpg);
+  background-size: cover;
+  text-align: center;
+}
+
+.section-title-services
+{
+
+  color: var(--clr-accent);
+  position: relative;
+}
+
+.section-title-services::after /* Adds the underline under the title */
+{
+
+  content: ''; /* Required for this to work */
+  display: block;
+  width: 5em;
+  height: 1px;
+  margin: 0.5em auto 1em;
+  background: var(--clr-accent);
+}
+
+.service /* Sets max width and keeps content center */
+{
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.services
+{
+
+  margin-bottom: 3em;
+}
+
+
+
+/* About Me Section */
+
+.about-me
+{
+
+  margin: 0 auto;
+  max-width: 1000px
+}
+
+.about-me-img
+{
+
+  box-shadow: var(--bs);
+}
+
+
+
+/* My Work Section */
+
+.my-work
+{
+
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  text-align: center;
+}
+
+.section-subtitle-work
+{
+
+  color: var(--clr-accent);
+  margin-bottom: 2em;
+}
+
+.portfolio
+{
+
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-item
+{
+
+  background-color: var(--clr-accent);
+  overflow: hidden;
+  margin: 0 1em;
+}
+
+.portfolio-img
+{
+
+  transition: transform 750ms cubic-bezier(0.5, 0, 0.5, 1), opacity 250ms linear; /* Adds smooth transition */
+}
+
+.portfolio-img:hover
+{
+
+  transform: scale(1.2); /* Makes image bigger */
+  opacity: 0.75; /* Adds opacity filter */
+}
+
+
+
+/* Footer Section */
+
+footer
+{
+
+  background-color: white;
+  color: var(--clr-dark);
+  text-align: center;
+  padding: 2.5em 0;
+  font-size: var(--fs-h3);
+}
+
+footer a
+{
+
+  color: inherit;
+}
+
+.social-list
+{
+
+  list-style: none; /* Removes bullet points */
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.social-list-link:hover
+{
+
+  opacity: 50%;
+}
+
+.social-list-item
+{
+
+  margin: 0 1em;
+}
+
+
+
+/* Portfolio Pages */
+
+.portfolio-item-individual
+{
+
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.portfolio-item-individual p
+{
+
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5em;
+}
+
+
+.portfolio-item-individual img
+{
+
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
